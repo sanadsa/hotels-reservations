@@ -1,0 +1,29 @@
+<h2 mat-dialog-title>Add Hotel</h2>
+<mat-dialog-content class="mat-typography">
+  <div [formGroup]="hotelForm" class="example-container">
+    <div>
+      <mat-form-field appearance="fill">
+        <mat-label>Name</mat-label>
+        <input matInput placeholder="Name" formControlName="name" required>
+      </mat-form-field>
+    </div>
+    <div>
+      <mat-form-field appearance="fill">
+        <mat-label>Address</mat-label>
+        <input matInput placeholder="Address" formControlName="address" required>
+      </mat-form-field>
+    </div>
+    <div>
+      <mat-form-field appearance="fill">
+        <mat-label>Image</mat-label>
+        <input matInput placeholder="Image URL" formControlName="image" required>
+      </mat-form-field>
+    </div>
+  </div>
+</mat-dialog-content>
+<mat-dialog-actions align='end'>
+  <button mat-stroked-button color="primary" mat-dialog-close>Cancel</button>
+  <button mat-stroked-button color="primary" [disabled]="!hotelForm.valid"
+    [mat-dialog-close]="{name: hotelForm.value.name, address: hotelForm.value.address, image: hotelForm.value.image}"
+    cdkFocusInitial>Add</button>
+</mat-dialog-actions>

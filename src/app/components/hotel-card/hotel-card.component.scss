@@ -1,0 +1,17 @@
+.card {
+  position: absolute;
+  left: 5px;
+  top: 10px;
+  font-size: 28px;
+  color: #ffff;
+  text-shadow: 2px 2px rgb(0, 0, 0);
+
+  .noImage {
+    color: rgb(0, 0, 0);
+  }
+
+  h1 {
+    font-size: 40px;
+    font-weight: bold;
+  }
+}

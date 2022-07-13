@@ -1,0 +1,12 @@
+<button mat-raised-button class="add" (click)="openDialog()">Add</button>
+<mat-form-field appearance="standard">
+  <mat-label>Search</mat-label>
+  <input matInput (keyup)="search($event)" placeholder="Search by name..." #input />
+</mat-form-field>
+
+<mat-grid-list cols="4" [gutterSize]="'10px'">
+  <mat-grid-tile *ngFor="let hotel of searchedHotels" class="gridTitle"
+    [ngStyle]="{'background': getUrl(hotel.image), 'background-size': 'cover'}">
+    <app-hotel-card [hotel]="hotel"></app-hotel-card>
+  </mat-grid-tile>
+</mat-grid-list>

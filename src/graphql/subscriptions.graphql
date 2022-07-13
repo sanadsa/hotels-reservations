@@ -1,0 +1,34 @@
+# this is an auto generated file. This will be overwritten
+subscription OnCreateHotel {
+  onCreateHotel {
+    id
+    name
+    address
+    image
+    roomTypes
+    createdAt
+    updatedAt
+  }
+}
+subscription OnUpdateHotel {
+  onUpdateHotel {
+    id
+    name
+    address
+    image
+    roomTypes
+    createdAt
+    updatedAt
+  }
+}
+subscription OnDeleteHotel {
+  onDeleteHotel {
+    id
+    name
+    address
+    image
+    roomTypes
+    createdAt
+    updatedAt
+  }
+}

@@ -1,0 +1,43 @@
+# this is an auto generated file. This will be overwritten
+mutation CreateHotel(
+  $input: CreateHotelInput!
+  $condition: ModelHotelConditionInput
+) {
+  createHotel(input: $input, condition: $condition) {
+    id
+    name
+    address
+    image
+    roomTypes
+    createdAt
+    updatedAt
+  }
+}
+mutation UpdateHotel(
+  $input: UpdateHotelInput!
+  $condition: ModelHotelConditionInput
+) {
+  updateHotel(input: $input, condition: $condition) {
+    id
+    name
+    address
+    image
+    roomTypes
+    createdAt
+    updatedAt
+  }
+}
+mutation DeleteHotel(
+  $input: DeleteHotelInput!
+  $condition: ModelHotelConditionInput
+) {
+  deleteHotel(input: $input, condition: $condition) {
+    id
+    name
+    address
+    image
+    roomTypes
+    createdAt
+    updatedAt
+  }
+}

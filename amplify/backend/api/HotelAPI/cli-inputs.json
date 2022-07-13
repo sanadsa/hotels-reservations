@@ -1,0 +1,12 @@
+{
+  "version": 1,
+  "serviceConfiguration": {
+    "apiName": "HotelAPI",
+    "serviceName": "AppSync",
+    "gqlSchemaPath": "C:\\Users\\ssatel\\Documents\\lendai\\hotel-reservations\\amplify\\backend\\api\\HotelAPI\\schema.graphql",
+    "defaultAuthType": {
+      "mode": "API_KEY",
+      "expirationTime": 7
+    }
+  }
+}

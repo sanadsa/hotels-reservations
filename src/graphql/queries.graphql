@@ -1,0 +1,30 @@
+# this is an auto generated file. This will be overwritten
+query GetHotel($id: ID!) {
+  getHotel(id: $id) {
+    id
+    name
+    address
+    image
+    roomTypes
+    createdAt
+    updatedAt
+  }
+}
+query ListHotels(
+  $filter: ModelHotelFilterInput
+  $limit: Int
+  $nextToken: String
+) {
+  listHotels(filter: $filter, limit: $limit, nextToken: $nextToken) {
+    items {
+      id
+      name
+      address
+      image
+      roomTypes
+      createdAt
+      updatedAt
+    }
+    nextToken
+  }
+}

@@ -1,0 +1,23 @@
+{
+  "dev": {
+    "awscloudformation": {
+      "AuthRoleName": "amplify-hotelreservations-dev-184351-authRole",
+      "UnauthRoleArn": "arn:aws:iam::758780680352:role/amplify-hotelreservations-dev-184351-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::758780680352:role/amplify-hotelreservations-dev-184351-authRole",
+      "Region": "eu-west-2",
+      "DeploymentBucketName": "amplify-hotelreservations-dev-184351-deployment",
+      "UnauthRoleName": "amplify-hotelreservations-dev-184351-unauthRole",
+      "StackName": "amplify-hotelreservations-dev-184351",
+      "StackId": "arn:aws:cloudformation:eu-west-2:758780680352:stack/amplify-hotelreservations-dev-184351/427e39e0-0130-11ed-961e-0608235fe5c2",
+      "AmplifyAppId": "d1nkkvldykjfy8"
+    },
+    "categories": {
+      "hosting": {
+        "amplifyhosting": {
+          "appId": "d1nkkvldykjfy8",
+          "type": "manual"
+        }
+      }
+    }
+  }
+}
