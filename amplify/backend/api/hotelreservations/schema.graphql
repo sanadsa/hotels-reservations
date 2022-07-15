@@ -7,5 +7,20 @@ type Hotel @model {
   name: String!
   address: String
   image: String
-  roomTypes: [String]
+  roomTypes: [RoomtType] @hasMany
+}
+
+type RoomtType @model {
+  id: ID!
+  type: String!
+  count: Int!
+}
+
+type Reservation @model {
+  id: ID!
+  clientName: String!
+  roomType: RoomtType! @hasOne
+  fromDate: String!
+  toDate: String!
+  hotel: Hotel @hasOne
 }

@@ -3,6 +3,8 @@ import { APIService, Hotel } from 'src/app/API.service';
 import { MatDialog } from '@angular/material/dialog';
 import { AddHotelComponent } from '../add-hotel/add-hotel.component';
 import { v4 as uuid } from 'uuid';
+import { HotelService } from '../services/hotel.service';
+import { HotelDialogComponent } from '../hotel-dialog/hotel-dialog.component';
 
 @Component({
   selector: 'app-hotels-layout',
@@ -10,17 +12,12 @@ import { v4 as uuid } from 'uuid';
   styleUrls: ['./hotels-layout.component.scss']
 })
 export class HotelsLayoutComponent implements OnInit {
-  public hotels: Array<Hotel> = [];
-  public searchedHotels: Array<Hotel> = [];
 
-  constructor(private api: APIService, public dialog: MatDialog) {
+  constructor(private api: APIService, public hotelService: HotelService, public dialog: MatDialog) {
   }
 
   async ngOnInit() {
-    this.api.ListHotels().then((event) => {
-      this.hotels = event.items as Hotel[];
-      this.assignCopy();
-    });
+    this.hotelService.getHotels();
   }
 
   openDialog() {
@@ -39,17 +36,29 @@ export class HotelsLayoutComponent implements OnInit {
     });
   }
 
-  assignCopy() {
-    this.searchedHotels = Object.assign([], this.hotels);
+  openHotel(hotel: Hotel) {
+    const dialogRef = this.dialog.open(HotelDialogComponent, { width: '750px', data: { hotel: hotel } });
+
+    dialogRef.afterClosed().subscribe(result => {
+      if (result) {
+        const hotel: Hotel = {
+          id: uuid(),
+          name: result.name,
+          address: result.address,
+          image: result.image
+        }
+        this.onCreate(hotel);
+      }
+    });
   }
 
   search(event: Event) {
     const value = (event.target as HTMLInputElement).value;
 
     if (!value) {
-      this.assignCopy();
+      this.hotelService.assignCopy();
     } // when nothing has typed
-    this.searchedHotels = this.hotels.filter(
+    this.hotelService.searchedHotels = this.hotelService.hotels.filter(
       item => item.name.toLowerCase().indexOf(value.trim().toLowerCase()) > -1
     )
   }
@@ -62,7 +71,7 @@ export class HotelsLayoutComponent implements OnInit {
     this.api
       .CreateHotel(hotel)
       .then((event) => {
-        this.searchedHotels.push(hotel);
+        this.hotelService.searchedHotels.push(hotel);
       })
       .catch((e) => {
         console.log('error creating hotel...', e);

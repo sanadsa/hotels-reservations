@@ -5,7 +5,17 @@ query GetHotel($id: ID!) {
     name
     address
     image
-    roomTypes
+    roomTypes {
+      items {
+        id
+        type
+        count
+        createdAt
+        updatedAt
+        hotelRoomTypesId
+      }
+      nextToken
+    }
     createdAt
     updatedAt
   }
@@ -21,9 +31,104 @@ query ListHotels(
       name
       address
       image
-      roomTypes
+      roomTypes {
+        nextToken
+      }
       createdAt
       updatedAt
+    }
+    nextToken
+  }
+}
+query GetRoomtType($id: ID!) {
+  getRoomtType(id: $id) {
+    id
+    type
+    count
+    createdAt
+    updatedAt
+    hotelRoomTypesId
+  }
+}
+query ListRoomtTypes(
+  $filter: ModelRoomtTypeFilterInput
+  $limit: Int
+  $nextToken: String
+) {
+  listRoomtTypes(filter: $filter, limit: $limit, nextToken: $nextToken) {
+    items {
+      id
+      type
+      count
+      createdAt
+      updatedAt
+      hotelRoomTypesId
+    }
+    nextToken
+  }
+}
+query GetReservation($id: ID!) {
+  getReservation(id: $id) {
+    id
+    clientName
+    roomType {
+      id
+      type
+      count
+      createdAt
+      updatedAt
+      hotelRoomTypesId
+    }
+    fromDate
+    toDate
+    hotel {
+      id
+      name
+      address
+      image
+      roomTypes {
+        nextToken
+      }
+      createdAt
+      updatedAt
+    }
+    createdAt
+    updatedAt
+    reservationRoomTypeId
+    reservationHotelId
+  }
+}
+query ListReservations(
+  $filter: ModelReservationFilterInput
+  $limit: Int
+  $nextToken: String
+) {
+  listReservations(filter: $filter, limit: $limit, nextToken: $nextToken) {
+    items {
+      id
+      clientName
+      roomType {
+        id
+        type
+        count
+        createdAt
+        updatedAt
+        hotelRoomTypesId
+      }
+      fromDate
+      toDate
+      hotel {
+        id
+        name
+        address
+        image
+        createdAt
+        updatedAt
+      }
+      createdAt
+      updatedAt
+      reservationRoomTypeId
+      reservationHotelId
     }
     nextToken
   }

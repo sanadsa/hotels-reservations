@@ -1,0 +1,100 @@
+<h2 mat-dialog-title>{{data.hotel.name}} Hotel</h2>
+<mat-dialog-content class="mat-typography">
+  <mat-tab-group>
+    <mat-tab label="Room Types">
+      <mat-form-field class="roomType" appearance="fill">
+        <mat-label>Room Type</mat-label>
+        <mat-select [(value)]="selectedType" required>
+          <mat-option *ngFor="let type of roomTypes" [disabled]="isTypeDisabled(type)" [value]="type">
+            {{type}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+      <mat-form-field class="roomCount" appearance="fill">
+        <mat-label>Available Rooms</mat-label>
+        <input matInput placeholder="Rooms Count" type="number" [(ngModel)]="selectedRoomsCount" required>
+      </mat-form-field>
+      <button mat-raised-button class="add" class="addRoomType" [disabled]="isAddDisabled()"
+        (click)="addRoomType()">Add</button>
+      <p *ngIf="hotelRooms?.items?.length === 0">No Room Types Available. Add room type and count</p>
+      <mat-list role="list">
+        <mat-list-item *ngFor="let type of hotelRooms?.items" role="listitem">
+          <p matLine> {{type?.type}} </p>
+          <p matLine> {{type?.count}} Available rooms</p>
+        </mat-list-item>
+      </mat-list>
+    </mat-tab>
+    <mat-tab label="Book Reservation">
+      <form [formGroup]="reservationForm" (ngSubmit)="addReservation()" class="example-container">
+        <div>
+          <mat-form-field appearance="fill">
+            <mat-label>Client Name</mat-label>
+            <input matInput placeholder="Name" formControlName="clientName" required>
+          </mat-form-field>
+        </div>
+        <div>
+          <mat-form-field appearance="fill">
+            <mat-label>Room Type</mat-label>
+            <mat-select formControlName="roomType" required>
+              <mat-option *ngFor="let type of roomsForReservation" [value]="type">
+                {{type.type}}
+              </mat-option>
+            </mat-select>
+            <input matInput placeholder="Room" formControlName="roomType" required>
+          </mat-form-field>
+        </div>
+        <div>
+          <mat-form-field appearance="fill">
+            <mat-label>Enter a date range</mat-label>
+            <mat-date-range-input [formGroup]="reservationForm" [min]="todayDate" [rangePicker]="picker">
+              <input matStartDate formControlName="fromDate" placeholder="Start date">
+              <input matEndDate formControlName="toDate" placeholder="End date">
+            </mat-date-range-input>
+            <mat-hint>MM/DD/YYYY – MM/DD/YYYY</mat-hint>
+            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+            <mat-date-range-picker #picker></mat-date-range-picker>
+
+            <mat-error *ngIf="reservationForm.controls['fromDate'].hasError('matStartDateInvalid')">Invalid start date
+            </mat-error>
+            <mat-error *ngIf="reservationForm.controls['toDate'].hasError('matEndDateInvalid')">Invalid end date
+            </mat-error>
+          </mat-form-field>
+        </div>
+        <button mat-stroked-button color="primary" class="addReservation" [disabled]="!reservationForm.valid"
+          type="submit" cdkFocusInitial>Add
+          Reservation</button>
+      </form>
+      <mat-error>{{error}}</mat-error>
+      <mat-hint>{{text}}</mat-hint>
+    </mat-tab>
+    <mat-tab label="Reservations">
+      <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+        <ng-container matColumnDef="clientName">
+          <th mat-header-cell *matHeaderCellDef>Client Name</th>
+          <td mat-cell *matCellDef="let element"> {{element.clientName}} </td>
+        </ng-container>
+        <ng-container matColumnDef="roomType">
+          <th mat-header-cell *matHeaderCellDef> Room Type </th>
+          <td mat-cell *matCellDef="let element"> {{element.roomType.type}} </td>
+        </ng-container>
+        <ng-container matColumnDef="from">
+          <th mat-header-cell *matHeaderCellDef> From </th>
+          <td mat-cell *matCellDef="let element"> {{element.fromDate | date:'dd-MM-yy'}} </td>
+        </ng-container>
+        <ng-container matColumnDef="to">
+          <th mat-header-cell *matHeaderCellDef> To </th>
+          <td mat-cell *matCellDef="let element"> {{element.toDate | date:'dd-MM-yy'}} </td>
+        </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+      </table>
+      <mat-label *ngIf="reservations.items.length === 0">No Reservations</mat-label>
+
+    </mat-tab>
+  </mat-tab-group>
+</mat-dialog-content>
+
+<mat-dialog-actions align='end'>
+  <button mat-stroked-button color="primary" mat-dialog-close>Close</button>
+</mat-dialog-actions>

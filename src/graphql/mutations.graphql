@@ -8,7 +8,17 @@ mutation CreateHotel(
     name
     address
     image
-    roomTypes
+    roomTypes {
+      items {
+        id
+        type
+        count
+        createdAt
+        updatedAt
+        hotelRoomTypesId
+      }
+      nextToken
+    }
     createdAt
     updatedAt
   }
@@ -22,7 +32,17 @@ mutation UpdateHotel(
     name
     address
     image
-    roomTypes
+    roomTypes {
+      items {
+        id
+        type
+        count
+        createdAt
+        updatedAt
+        hotelRoomTypesId
+      }
+      nextToken
+    }
     createdAt
     updatedAt
   }
@@ -36,8 +56,159 @@ mutation DeleteHotel(
     name
     address
     image
-    roomTypes
+    roomTypes {
+      items {
+        id
+        type
+        count
+        createdAt
+        updatedAt
+        hotelRoomTypesId
+      }
+      nextToken
+    }
     createdAt
     updatedAt
+  }
+}
+mutation CreateRoomtType(
+  $input: CreateRoomtTypeInput!
+  $condition: ModelRoomtTypeConditionInput
+) {
+  createRoomtType(input: $input, condition: $condition) {
+    id
+    type
+    count
+    createdAt
+    updatedAt
+    hotelRoomTypesId
+  }
+}
+mutation UpdateRoomtType(
+  $input: UpdateRoomtTypeInput!
+  $condition: ModelRoomtTypeConditionInput
+) {
+  updateRoomtType(input: $input, condition: $condition) {
+    id
+    type
+    count
+    createdAt
+    updatedAt
+    hotelRoomTypesId
+  }
+}
+mutation DeleteRoomtType(
+  $input: DeleteRoomtTypeInput!
+  $condition: ModelRoomtTypeConditionInput
+) {
+  deleteRoomtType(input: $input, condition: $condition) {
+    id
+    type
+    count
+    createdAt
+    updatedAt
+    hotelRoomTypesId
+  }
+}
+mutation CreateReservation(
+  $input: CreateReservationInput!
+  $condition: ModelReservationConditionInput
+) {
+  createReservation(input: $input, condition: $condition) {
+    id
+    clientName
+    roomType {
+      id
+      type
+      count
+      createdAt
+      updatedAt
+      hotelRoomTypesId
+    }
+    fromDate
+    toDate
+    hotel {
+      id
+      name
+      address
+      image
+      roomTypes {
+        nextToken
+      }
+      createdAt
+      updatedAt
+    }
+    createdAt
+    updatedAt
+    reservationRoomTypeId
+    reservationHotelId
+  }
+}
+mutation UpdateReservation(
+  $input: UpdateReservationInput!
+  $condition: ModelReservationConditionInput
+) {
+  updateReservation(input: $input, condition: $condition) {
+    id
+    clientName
+    roomType {
+      id
+      type
+      count
+      createdAt
+      updatedAt
+      hotelRoomTypesId
+    }
+    fromDate
+    toDate
+    hotel {
+      id
+      name
+      address
+      image
+      roomTypes {
+        nextToken
+      }
+      createdAt
+      updatedAt
+    }
+    createdAt
+    updatedAt
+    reservationRoomTypeId
+    reservationHotelId
+  }
+}
+mutation DeleteReservation(
+  $input: DeleteReservationInput!
+  $condition: ModelReservationConditionInput
+) {
+  deleteReservation(input: $input, condition: $condition) {
+    id
+    clientName
+    roomType {
+      id
+      type
+      count
+      createdAt
+      updatedAt
+      hotelRoomTypesId
+    }
+    fromDate
+    toDate
+    hotel {
+      id
+      name
+      address
+      image
+      roomTypes {
+        nextToken
+      }
+      createdAt
+      updatedAt
+    }
+    createdAt
+    updatedAt
+    reservationRoomTypeId
+    reservationHotelId
   }
 }

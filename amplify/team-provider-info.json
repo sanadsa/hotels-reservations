@@ -17,6 +17,9 @@
           "appId": "d1nkkvldykjfy8",
           "type": "manual"
         }
+      },
+      "auth": {
+        "hotelreservationsbe2e06fe": {}
       }
     }
   }

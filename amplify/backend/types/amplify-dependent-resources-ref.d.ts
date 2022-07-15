@@ -1,9 +1,20 @@
 export type AmplifyDependentResourcesAttributes = {
     "api": {
-        "HotelAPI": {
+        "hotelreservations": {
             "GraphQLAPIKeyOutput": "string",
             "GraphQLAPIIdOutput": "string",
             "GraphQLAPIEndpointOutput": "string"
+        }
+    },
+    "auth": {
+        "hotelreservationsbe2e06fe": {
+            "IdentityPoolId": "string",
+            "IdentityPoolName": "string",
+            "UserPoolId": "string",
+            "UserPoolArn": "string",
+            "UserPoolName": "string",
+            "AppClientIDWeb": "string",
+            "AppClientID": "string"
         }
     }
 }

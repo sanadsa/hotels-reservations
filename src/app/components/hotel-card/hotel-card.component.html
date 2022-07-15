@@ -1,5 +1,9 @@
 <div class="card" [ngClass]="{'noImage': hotel.image === null}">
-  <h1>{{hotel.name}}</h1>
-  <p>{{hotel.address}}</p>
-  <!-- <img src="{{hotel.image}}"> -->
+  <div>
+    <h1>{{hotel.name}}</h1>
+    <p>{{hotel.address}}</p>
+  </div>
+  <div (click)="deleteHotel()" class="delete">
+    X
+  </div>
 </div>

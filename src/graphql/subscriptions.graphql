@@ -5,7 +5,17 @@ subscription OnCreateHotel {
     name
     address
     image
-    roomTypes
+    roomTypes {
+      items {
+        id
+        type
+        count
+        createdAt
+        updatedAt
+        hotelRoomTypesId
+      }
+      nextToken
+    }
     createdAt
     updatedAt
   }
@@ -16,7 +26,17 @@ subscription OnUpdateHotel {
     name
     address
     image
-    roomTypes
+    roomTypes {
+      items {
+        id
+        type
+        count
+        createdAt
+        updatedAt
+        hotelRoomTypesId
+      }
+      nextToken
+    }
     createdAt
     updatedAt
   }
@@ -27,8 +47,141 @@ subscription OnDeleteHotel {
     name
     address
     image
-    roomTypes
+    roomTypes {
+      items {
+        id
+        type
+        count
+        createdAt
+        updatedAt
+        hotelRoomTypesId
+      }
+      nextToken
+    }
     createdAt
     updatedAt
+  }
+}
+subscription OnCreateRoomtType {
+  onCreateRoomtType {
+    id
+    type
+    count
+    createdAt
+    updatedAt
+    hotelRoomTypesId
+  }
+}
+subscription OnUpdateRoomtType {
+  onUpdateRoomtType {
+    id
+    type
+    count
+    createdAt
+    updatedAt
+    hotelRoomTypesId
+  }
+}
+subscription OnDeleteRoomtType {
+  onDeleteRoomtType {
+    id
+    type
+    count
+    createdAt
+    updatedAt
+    hotelRoomTypesId
+  }
+}
+subscription OnCreateReservation {
+  onCreateReservation {
+    id
+    clientName
+    roomType {
+      id
+      type
+      count
+      createdAt
+      updatedAt
+      hotelRoomTypesId
+    }
+    fromDate
+    toDate
+    hotel {
+      id
+      name
+      address
+      image
+      roomTypes {
+        nextToken
+      }
+      createdAt
+      updatedAt
+    }
+    createdAt
+    updatedAt
+    reservationRoomTypeId
+    reservationHotelId
+  }
+}
+subscription OnUpdateReservation {
+  onUpdateReservation {
+    id
+    clientName
+    roomType {
+      id
+      type
+      count
+      createdAt
+      updatedAt
+      hotelRoomTypesId
+    }
+    fromDate
+    toDate
+    hotel {
+      id
+      name
+      address
+      image
+      roomTypes {
+        nextToken
+      }
+      createdAt
+      updatedAt
+    }
+    createdAt
+    updatedAt
+    reservationRoomTypeId
+    reservationHotelId
+  }
+}
+subscription OnDeleteReservation {
+  onDeleteReservation {
+    id
+    clientName
+    roomType {
+      id
+      type
+      count
+      createdAt
+      updatedAt
+      hotelRoomTypesId
+    }
+    fromDate
+    toDate
+    hotel {
+      id
+      name
+      address
+      image
+      roomTypes {
+        nextToken
+      }
+      createdAt
+      updatedAt
+    }
+    createdAt
+    updatedAt
+    reservationRoomTypeId
+    reservationHotelId
   }
 }

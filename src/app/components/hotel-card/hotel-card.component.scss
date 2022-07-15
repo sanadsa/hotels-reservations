@@ -1,5 +1,8 @@
 .card {
   position: absolute;
+  display: flex;
+  justify-content: space-between;
+  width: 90%;
   left: 5px;
   top: 10px;
   font-size: 28px;
@@ -13,5 +16,10 @@
   h1 {
     font-size: 40px;
     font-weight: bold;
+  }
+
+  .delete {
+    float: right;
+    cursor: pointer;
   }
 }

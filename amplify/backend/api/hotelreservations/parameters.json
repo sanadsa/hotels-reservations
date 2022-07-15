@@ -1,5 +1,5 @@
 {
-  "AppSyncApiName": "HotelAPI",
+  "AppSyncApiName": "hotelreservations",
   "DynamoDBBillingMode": "PAY_PER_REQUEST",
   "DynamoDBEnableServerSideEncryption": false
 }
