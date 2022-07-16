@@ -23,6 +23,7 @@ import { MatListModule } from '@angular/material/list';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
 import { MatTableModule } from '@angular/material/table';
+import { DashboardDialogComponent } from './components/dashboard-dialog/dashboard-dialog.component';
 
 
 @NgModule({
@@ -31,7 +32,8 @@ import { MatTableModule } from '@angular/material/table';
     HotelsLayoutComponent,
     AddHotelComponent,
     HotelCardComponent,
-    HotelDialogComponent
+    HotelDialogComponent,
+    DashboardDialogComponent
   ],
   imports: [
     BrowserModule,

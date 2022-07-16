@@ -16,7 +16,7 @@ export class HotelService {
 
   getHotels() {
     this.api.ListHotels().then((event) => {
-      this.hotels = event.items as Hotel[];
+      this.hotels = event.items as unknown as Hotel[];
       this.assignCopy();
     });
   }

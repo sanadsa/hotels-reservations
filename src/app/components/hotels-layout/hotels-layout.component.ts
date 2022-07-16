@@ -5,6 +5,7 @@ import { AddHotelComponent } from '../add-hotel/add-hotel.component';
 import { v4 as uuid } from 'uuid';
 import { HotelService } from '../services/hotel.service';
 import { HotelDialogComponent } from '../hotel-dialog/hotel-dialog.component';
+import { DashboardDialogComponent } from '../dashboard-dialog/dashboard-dialog.component';
 
 @Component({
   selector: 'app-hotels-layout',
@@ -36,28 +37,20 @@ export class HotelsLayoutComponent implements OnInit {
     });
   }
 
-  openHotel(hotel: Hotel) {
-    const dialogRef = this.dialog.open(HotelDialogComponent, { width: '750px', data: { hotel: hotel } });
+  openDashboard() {
+    const dialogRef = this.dialog.open(DashboardDialogComponent, { height: '360px', width: '600px' });
+  }
 
-    dialogRef.afterClosed().subscribe(result => {
-      if (result) {
-        const hotel: Hotel = {
-          id: uuid(),
-          name: result.name,
-          address: result.address,
-          image: result.image
-        }
-        this.onCreate(hotel);
-      }
-    });
+  openHotel(hotel: Hotel) {
+    this.dialog.open(HotelDialogComponent, { width: '750px', height: '530px', data: { hotel: hotel } });
   }
 
   search(event: Event) {
     const value = (event.target as HTMLInputElement).value;
 
-    if (!value) {
+    if (!value) { // when nothing has typed
       this.hotelService.assignCopy();
-    } // when nothing has typed
+    }
     this.hotelService.searchedHotels = this.hotelService.hotels.filter(
       item => item.name.toLowerCase().indexOf(value.trim().toLowerCase()) > -1
     )

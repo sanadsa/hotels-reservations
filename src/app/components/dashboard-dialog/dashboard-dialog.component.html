@@ -1,0 +1,13 @@
+<h2 mat-dialog-title>Reports</h2>
+<mat-dialog-content class="mat-typography dashboardDialog">
+  <mat-label>Number of reservations by day:</mat-label>
+  <mat-list role="list">
+    <mat-list-item *ngFor="let type of reservationsByDay" role="listitem">
+      <p matLine> {{type?.day | date:'dd-MM-yy'}} </p>
+      <p matLine> {{type?.numberOfReservations}} reservations</p>
+    </mat-list-item>
+  </mat-list>
+</mat-dialog-content>
+<mat-dialog-actions align='end'>
+  <button mat-stroked-button color="primary" mat-dialog-close>Close</button>
+</mat-dialog-actions>
